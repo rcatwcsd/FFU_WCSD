@@ -1,12 +1,12 @@
 @ECHO OFF
 REM M365 Apps/Office ProPlus
-REM d:\Office\setup.exe /configure d:\office\DeployFFU.xml
+d:\Office\setup.exe /configure d:\office\DeployFFU.xml
 REM Install Defender Platform Update
 REM Install Defender Definitions
 REM Install Windows Security Platform Update
 REM Install OneDrive Per Machine
 REM Install Edge Stable
-REM THE ABOVE LINES MUST NOT BE CHANGED. DO NOT MOVE IT UNLESS YOU KNOW WHY.
+REM THE ABOVE LINES MUST NOT BE CHANGED. DO NOT MOVE OR CHANGE THEM UNLESS YOU KNOW WHY.
 REM _______________________________________________________________________________________
 
 REM Add additional apps below here
@@ -36,6 +36,7 @@ echo Uninstalling Microsoft bloat...
 powershell.exe -ex bypass -noprofile -file "d:\MSBloatRemoval\uninstall_ms_bloat.ps1"
 
 REM NEW Umbrella Client install
+echo Installing Cisco Umbrella...
 powershell.exe -ex bypass -noprofile -file d:\Umbrella\install_umbrella_ffu.ps1
 
 REM PaperCut

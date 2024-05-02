@@ -154,6 +154,7 @@ Remove-Job -Name $JobName
 
 ### Append STANDARD, KIOSK, or RAPTOR to FFU file name
 $FFUFile = Get-ChildItem "$PSScriptRoot\FFU\" -Filter *.ffu | Sort-Object LastWriteTime | Select-Object -last 1
-Move-Item -Path $FFUFile.FullName -Destination "$PSScriptRoot\$($FFUFile.BaseName)-$($ImageType.ToUpper()).ffu"
+Move-Item -Path $FFUFile.FullName -Destination "$PSScriptRoot\FFU\$($FFUFile.BaseName)-$($ImageType.ToUpper()).ffu"
 
+# Report successful script run
 Write-Host "New FFU created successfully." -ForegroundColor DarkGreen
