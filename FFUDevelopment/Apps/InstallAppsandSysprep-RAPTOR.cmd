@@ -19,63 +19,39 @@ REM msiexec /i d:\Contoso\setup.msi /qn /norestart
 REM END EXAMPLE
 
 REM Installing/Updating DesktopAppInstaller (AKA winget)
-echo Installing/Updating DesktopAppInstaller - AKA winget
 powershell.exe -ex bypass -noprofile -file "d:\DesktopAppInstaller\update_winget.ps1"
 
 REM Install Company Portal
 echo Installing Company Portal...
 powershell.exe -ex bypass -noprofile -file d:\WingetAppInstaller\WingetAppInstallerForFFU.ps1 -AppName "Company Portal" -AppDisplayName "CompanyPortal"
 
-REM Install Teams (New)
-REM powershell.exe -ex bypass -noprofile -file "d:\Teams\install_teams.ps1"
-echo Installing Teams...
-d:\Teams\teamsbootstrapper.exe -p
-
 REM Uninstall MS Bloat
 echo Uninstalling Microsoft bloat...
 powershell.exe -ex bypass -noprofile -file "d:\MSBloatRemoval\uninstall_ms_bloat.ps1"
 
 REM NEW Umbrella Client install
-powershell.exe -ex bypass -noprofile -file d:\Umbrella\install_new_umbrella.ps1
+powershell.exe -ex bypass -noprofile -file d:\Umbrella\install_umbrella_ffu.ps1
 
-REM PaperCut
-echo Installing PaperCut...
-msiexec /i "d:\PaperCut\pc-print-deploy-client[papercut.washoe.wcsd].msi" /qn /norestart
-
-REM TestNav
-echo Installing TestNav...
-msiexec /i "d:\TestNav\testnav.msi" /qn /norestart
-
-REM NWEA
-echo Installing NWEA...
-msiexec /i "d:\NWEA\NWEA Secure Testing Browser.msi" /qn /norestart
-
-REM DRC Insight
-echo Installing DRC Insight...
-msiexec /i "d:\DRC\drc_insight_setup.msi" /qn /norestart
-
-REM Respondus LockDown Browser
-echo Installing Respondus Lockdown Broswer...
-msiexec /i "d:\Respondus\Respondus_LockDown_Browser_Lab_OEM.msi" /qn /norestart
-
-REM Apply default power settings
-echo Applying default power settings...
-powershell.exe -ex bypass -noprofile -file "d:\PowerSettings\remediation.ps1"
+REM Raptor Hardware Install
+echo Installing .net 3.5 for Raptor Hardware Services...
+DISM /Online /Enable-Feature /FeatureName:NetFx3 /All 
+echo Installing Raptor Hardware Services...
+D:\RaptorHardware\RaptorHardwareServices.exe /s
 
 REM Apply registry edits
 echo Applying registry edits...
 powershell.exe -ex bypass -noprofile -file  "d:\RegistryEdits\RegistryEdits.ps1"
 
-REM Copying wifi profile to image
+REM Apply default power settings
+echo Applying default power settings...
+powershell.exe -ex bypass -noprofile -file "d:\PowerSettings\remediation.ps1"
+echo Applying registry edits...
+powershell.exe -ex bypass -noprofile -file  "d:\RegistryEdits\RegistryEdits.ps1"
+
+REM Copy wifi profile to image
 echo Adding wifi profile...
 mkdir C:\deployment
 copy "D:\WifiProfile\Wi-Fi-ap@WCSD.xml" "C:\deployment\Wi-Fi-ap@WCSD.xml"
-
-REM Make weblinks
-echo Making Clever shortcuts...
-powershell.exe -executionpolicy bypass -file "D:\WebLinks\Intune_Shortcut_Maker.ps1" -Url "https://clever.com/in/washoe" -ShortcutName "Clever" -StartMenu -Desktop
-echo Making Canvas shortcut...
-powershell.exe -executionpolicy bypass -file "D:\WebLinks\Intune_Shortcut_Maker.ps1" -Url "https://washoe.instructure.com" -ShortcutName "Canvas" -StartMenu
 
 
 REM DO NOT EDIT BELOW THIS LINE UNLESS YOU HAVE GOOD REASON

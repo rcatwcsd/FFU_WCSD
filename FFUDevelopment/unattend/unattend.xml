@@ -4,5 +4,21 @@
     <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
       <ComputerName>MyComputer</ComputerName>
     </component>
+    <!-- Begin WCSD Edit-->
+    <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <RunSynchronous>
+        <RunSynchronousCommand wcm:action="add">
+          <Order>1</Order>
+          <Description>Add wifi profile</Description>
+          <Path>cmd /c netsh wlan add profile filename="C:\deployment\Wi-Fi-ap@WCSD.xml"</Path>
+        </RunSynchronousCommand>
+        <RunSynchronousCommand wcm:action="add">
+          <Order>2</Order>
+          <Description>Delete wifi xml</Description>
+          <Path>cmd /c del "C:\deployment\Wi-Fi-ap@WCSD.xml"</Path>
+        </RunSynchronousCommand>
+      </RunSynchronous>
+    </component>
+    <!-- End WCSD Edit-->
   </settings>
 </unattend>

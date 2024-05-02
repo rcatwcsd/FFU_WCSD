@@ -36,7 +36,7 @@ echo Uninstalling Microsoft bloat...
 powershell.exe -ex bypass -noprofile -file "d:\MSBloatRemoval\uninstall_ms_bloat.ps1"
 
 REM NEW Umbrella Client install
-powershell.exe -ex bypass -noprofile -file d:\Umbrella\install_new_umbrella.ps1
+powershell.exe -ex bypass -noprofile -file d:\Umbrella\install_umbrella_ffu.ps1
 
 REM PaperCut
 echo Installing PaperCut...
