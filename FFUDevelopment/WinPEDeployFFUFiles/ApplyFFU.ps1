@@ -126,8 +126,8 @@ $LogFileName = 'ScriptLog.txt'
 $USBDrive = Get-USBDrive
 New-item -Path $USBDrive -Name $LogFileName -ItemType "file" -Force | Out-Null
 $LogFile = $USBDrive + $LogFilename
-$version = '2404.2'
-$WCSDVersion = 2405.2.1 # WCSD Edit 0 - Just for version tracking
+$version = '2404.3'
+$WCSDVersion = "2405.2.2" # WCSD Edit 0 - Just for version tracking
 WriteLog 'Begin Logging'
 WriteLog "Script version: $version"
 WriteLog "WCSD Edit version: $WCSDVersion" # WCSD Edit 0 - Just for version tracking
