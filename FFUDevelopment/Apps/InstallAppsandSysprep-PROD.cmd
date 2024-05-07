@@ -1,6 +1,6 @@
 @ECHO OFF
 REM M365 Apps/Office ProPlus
-REM d:\Office\setup.exe /configure d:\office\DeployFFU.xml
+d:\Office\setup.exe /configure d:\office\DeployFFU.xml
 REM Install Defender Platform Update
 REM Install Defender Definitions
 REM Install Windows Security Platform Update
@@ -37,7 +37,7 @@ powershell.exe -ex bypass -noprofile -file "d:\MSBloatRemoval\uninstall_ms_bloat
 
 REM NEW Umbrella Client install
 echo Installing Cisco Umbrella...
-powershell.exe -ex bypass -noprofile -file d:\Umbrella\install_new_umbrella.ps1
+powershell.exe -ex bypass -noprofile -file d:\Umbrella\install_umbrella_ffu.ps1
 
 REM PaperCut
 echo Installing PaperCut...
